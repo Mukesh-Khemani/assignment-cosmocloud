@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import addNewField from "./addNewField";
 
 const InputName = ({ givenName }) => {
   const [name, setName] = useState(givenName);
@@ -39,17 +40,34 @@ const InputType = ({ type, setType }) => {
 
 function Field({ field }) {
   const [type, setType] = useState(field.type);
+  const [children, setChildren] = useState(field.children);
+
+  const addFieldToChildren = () => {
+    setChildren((old) => {
+      let newChildren = [...old];
+      newChildren.push(addNewField());
+      return newChildren;
+    });
+  };
 
   return (
     <div style={{ paddingLeft: "15px" }}>
       <div>
         <InputName givenName={field.name} /> :{" "}
         <InputType type={type} setType={setType} />
+        {type === "object" && (
+          <span
+            onClick={addFieldToChildren}
+            className="material-symbols-outlined"
+          >
+            add
+          </span>
+        )}
       </div>
 
       {type === "object" && (
         <div>
-          {field.children.map((item, index) => (
+          {children.map((item, index) => (
             <Field field={item} key={index} />
           ))}
         </div>

@@ -1,3 +1,6 @@
+import ShortUniqueId from "short-unique-id";
+const uid = new ShortUniqueId({ length: 10 });
+
 const defaultState = [
   {
     type: "object",
@@ -7,13 +10,13 @@ const defaultState = [
         type: "string",
         name: "firstname",
         children: [],
-        id: 3,
+        id: uid(),
       },
       {
         type: "string",
         name: "lastname",
         children: [],
-        id: 3,
+        id: uid(),
       },
       {
         type: "object",
@@ -23,7 +26,7 @@ const defaultState = [
             type: "string",
             name: "ferrari",
             children: [],
-            id: 3,
+            id: uid(),
           },
           {
             type: "object",
@@ -32,22 +35,22 @@ const defaultState = [
                 type: "string",
                 name: "R8",
                 children: [],
-                id: 3,
+                id: uid(),
             }
             ],
-            id: 4,
+            id: uid(),
           },
         ],
-        id: 4,
+        id: uid(),
       },
     ],
-    id: 0,
+    id: uid(),
   },
   {
     type: "boolean",
     name: "class",
     children: [],
-    id: 1,
+    id: uid(),
   },
   {
     type: "string",
