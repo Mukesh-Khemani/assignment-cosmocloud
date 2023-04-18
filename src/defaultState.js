@@ -7,7 +7,7 @@ const defaultState = [
         type: "string",
         name: "firstname",
         children: [],
-        id: 4,
+        id: 3,
       },
       {
         type: "string",
@@ -26,13 +26,19 @@ const defaultState = [
             id: 3,
           },
           {
-            type: "string",
+            type: "object",
             name: "audi",
-            children: [],
-            id: 3,
+            children: [{
+                type: "string",
+                name: "R8",
+                children: [],
+                id: 3,
+            }
+            ],
+            id: 4,
           },
         ],
-        id: 3,
+        id: 4,
       },
     ],
     id: 0,
@@ -45,6 +51,12 @@ const defaultState = [
   },
   {
     type: "string",
+    name: "order",
+    children: [],
+    id: 3,
+  },
+  {
+    type: "integer",
     name: "order",
     children: [],
     id: 2,
