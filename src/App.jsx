@@ -4,7 +4,7 @@ import defaultState from "./defaultState";
 import addNewField from "./addNewField";
 
 function App() {
-  const [fields, setFields] = useState([]);
+  const [fields, setFields] = useState(defaultState);
 
   const addFieldToChildren = () => {
     setFields((old) => {
@@ -16,7 +16,7 @@ function App() {
 
   const deleteChild = (id) => {
     setFields((old) => {
-      let newChildren = old.filter((item) => item.id === id);
+      let newChildren = old.filter((item) => item.id !== id);
       return newChildren;
     });
   };
@@ -28,8 +28,8 @@ function App() {
       </span>
 
       <div>
-        {fields.map((item, index) => (
-          <Field deleteChild={deleteChild} field={item} key={index} />
+        {fields.map((item) => (
+          <Field deleteChild={deleteChild} field={item} key={item.id} />
         ))}
       </div>
     </div>

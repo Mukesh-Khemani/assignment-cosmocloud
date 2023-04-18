@@ -41,7 +41,6 @@ function Field({ field, deleteChild }) {
   const addFieldToChildren = () => {
     setChildren((old) => {
       let newChildren = [...old];
-      console.log(newChildren);
       newChildren.push(addNewField());
       return newChildren;
     });
@@ -69,10 +68,7 @@ function Field({ field, deleteChild }) {
         )}
         <span
           className="material-symbols-outlined"
-          onClick={() => {
-            console.log(field.id);
-            deleteChild(field.id);
-          }}
+          onClick={() => deleteChild(field.id)}
         >
           delete
         </span>
@@ -80,8 +76,12 @@ function Field({ field, deleteChild }) {
 
       {type === "object" && (
         <div>
-          {children.map((item, index) => (
-            <Field field={item} key={index} deleteChild={() => {}} />
+          {children.map((item) => (
+            <Field
+              field={item}
+              key={item.id}
+              deleteChild={deleteChildOfField}
+            />
           ))}
         </div>
       )}
