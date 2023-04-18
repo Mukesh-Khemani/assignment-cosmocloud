@@ -23,11 +23,7 @@ const InputName = ({ givenName }) => {
 const InputType = ({ type, setType }) => {
   return (
     <span>
-      <select
-        value={type}
-        onChange={(e) => setType(e.target.value)}
-        onBlur={() => setShowEdit(false)}
-      >
+      <select value={type} onChange={(e) => setType(e.target.value)}>
         <option value="object">object</option>
         <option value="string">string</option>
         <option value="boolean">boolean</option>
@@ -38,14 +34,22 @@ const InputType = ({ type, setType }) => {
   );
 };
 
-function Field({ field }) {
+function Field({ field, deleteChild }) {
   const [type, setType] = useState(field.type);
   const [children, setChildren] = useState(field.children);
 
   const addFieldToChildren = () => {
     setChildren((old) => {
       let newChildren = [...old];
+      console.log(newChildren);
       newChildren.push(addNewField());
+      return newChildren;
+    });
+  };
+
+  const deleteChildOfField = (id) => {
+    setChildren((old) => {
+      let newChildren = old.filter((item) => item.id !== id);
       return newChildren;
     });
   };
@@ -63,12 +67,21 @@ function Field({ field }) {
             add
           </span>
         )}
+        <span
+          className="material-symbols-outlined"
+          onClick={() => {
+            console.log(field.id);
+            deleteChild(field.id);
+          }}
+        >
+          delete
+        </span>
       </div>
 
       {type === "object" && (
         <div>
           {children.map((item, index) => (
-            <Field field={item} key={index} />
+            <Field field={item} key={index} deleteChild={() => {}} />
           ))}
         </div>
       )}
