@@ -56,13 +56,13 @@ const defaultState = [
     type: "string",
     name: "order",
     children: [],
-    id: 3,
+    id: uid(),
   },
   {
     type: "integer",
-    name: "order",
+    name: "phoneNumber",
     children: [],
-    id: 2,
+    id: uid(),
   },
 ];
 

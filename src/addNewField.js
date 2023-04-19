@@ -3,8 +3,8 @@ const uid = new ShortUniqueId({ length: 10 });
 
 const addNewField = () => {
   const newField = {
-    type: "boolean",
-    name: "addNewName",
+    type: "string",
+    name: "addName",
     children: [],
     id: uid(),
   };

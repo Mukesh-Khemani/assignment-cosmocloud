@@ -22,15 +22,31 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <span onClick={addFieldToChildren} className="material-symbols-outlined">
-        add
-      </span>
-
-      <div>
-        {fields.map((item) => (
-          <Field deleteChild={deleteChild} field={item} key={item.id} />
-        ))}
+    <div className="py-5">
+      <div className="grid gap-4 border-4 rounded-xl p-6 w-2/3 mx-auto bg-white">
+        <div className="bg-slate-50 flex flex-col">
+          <div className="flex flex-row justify-between items-center px-1">
+            <span className="text-xs font-bold text-slate-500">
+              Field name and type
+            </span>
+            <span
+              onClick={addFieldToChildren}
+              className="material-symbols-outlined cursor-pointer text-sm"
+            >
+              add
+            </span>
+          </div>
+          <div className="border">
+            {fields.map((item, index) => (
+              <Field
+                deleteChild={deleteChild}
+                field={item}
+                key={item.id}
+                sno={index + 1}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
